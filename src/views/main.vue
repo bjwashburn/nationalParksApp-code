@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import { ref, computed, watch } from 'vue'; // Add watch
+import { ref, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
 
@@ -27,9 +27,9 @@ const selectedThingToDo = ref(null);
 const parkSearch = ref('');
 const campgroundSearch = ref('');
 const thingToDoSearch = ref('');
-const parkLimit = ref(5);
-const campgroundLimit = ref(5);
-const thingToDoLimit = ref(5);
+const parkLimit = ref(50);
+const campgroundLimit = ref(50);
+const thingToDoLimit = ref(50);
 const parkStart = ref(0);
 const campgroundStart = ref(0);
 const thingToDoStart = ref(0);
@@ -38,7 +38,7 @@ const parkResults = ref([]);
 const campgroundResults = ref([]);
 const thingToDoResults = ref([]);
 const featuredParks = ref([]);
-const featuredParksLimit = ref(10);
+const featuredParksLimit = ref(50);
 const featuredParksStart = ref(0);
 const sliderRef = ref(null);
 
@@ -46,7 +46,6 @@ const profileInitial = computed(() => {
     return authStore.user?.email?.charAt(0).toUpperCase() || 'U';
 });
 
-// Toggle dropdown
 const toggleDropdown = () => {
     showDropdown.value = !showDropdown.value;
 };
@@ -82,7 +81,6 @@ const openThingToDoDetailsModal = (thingToDo) => {
     showThingToDoDetailsModal.value = true;
 };
 
-// Close modals
 const closeEditModal = () => {
     showEditModal.value = false;
 };
@@ -108,12 +106,40 @@ const closeThingToDoDetailsModal = () => {
 
 const handleEditAccount = async () => {
     try {
-        const payload = {
-            firstName: editForm.value.firstName,
-            lastName: editForm.value.lastName,
-            email: editForm.value.email,
-            username: editForm.value.userName,
-        };
+        if (!editForm.value.firstName || editForm.value.firstName.length < 1 || editForm.value.firstName.length > 128) {
+            throw new Error('First name must be between 1 and 128 characters');
+        }
+        if (!editForm.value.lastName || editForm.value.lastName.length < 1 || editForm.value.lastName.length > 128) {
+            throw new Error('Last name must be between 1 and 128 characters');
+        }
+        if (!editForm.value.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(editForm.value.email)) {
+            throw new Error('Invalid email format');
+        }
+        if (!editForm.value.userName || editForm.value.userName.length < 1 || editForm.value.userName.length > 128) {
+            throw new Error('Username must be between 1 and 128 characters');
+        }
+        if (!/^[a-zA-Z0-9_]+$/.test(editForm.value.userName)) {
+            throw new Error('Username can only contain letters, numbers, and underscores');
+        }
+        const payload = {};
+        if (editForm.value.firstName !== authStore.user.firstName) {
+            payload.firstName = editForm.value.firstName;
+        }
+        if (editForm.value.lastName !== authStore.user.lastName) {
+            payload.lastName = editForm.value.lastName;
+        }
+        if (editForm.value.email !== authStore.user.email) {
+            payload.email = editForm.value.email;
+        }
+        if (editForm.value.userName !== authStore.user.userName) {
+            payload.userName = editForm.value.userName;
+        }
+
+        if (Object.keys(payload).length === 0) {
+            alert('No changes to update.');
+            closeEditModal();
+            return;
+        }
 
         console.log('Updating account with payload:', payload, 'token:', authStore.token);
 
@@ -337,7 +363,7 @@ const handleSearch = () => {
 <template>
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">National Parks App</div>
+            <div class="logo">ParkQuest</div>
             <nav class="nav">
                 <router-link to="/explore-parks">Explore Parks</router-link>
                 <router-link to="/map-view">Map View</router-link>
@@ -372,7 +398,7 @@ const handleSearch = () => {
             <section class="search-grid">
                 <div class="search-box">
                     <h2>National Parks</h2>
-                    <input v-model="parkSearch" @keyup.enter="handleSearch" placeholder="Search parks" class="search-input"/>
+                    <input v-model="parkSearch" @keyup.enter="handleSearch" placeholder="Search parks..." class="search-input"/>
                     <button @click="handleSearch" class="btn btn-filled">Search</button>
                     <ul class="results-list">
                         <li v-for="park in parkResults" :key="park.id" @click="openParkDetailsModal(park)">
@@ -443,7 +469,9 @@ const handleSearch = () => {
                             <input type="text" id="userName" v-model="editForm.userName" placeholder="Enter your username" required/>
                         </div>
                         <div class="modal-actions">
-                            <button type="button" @click="closeEditModal" class="btn btn-outline">Cancel</button>
+                            <button type="button" @click="closeEditModal" class="btn btn-outline">
+                                Cancel
+                            </button>
                             <button type="submit" class="btn btn-filled">Save Changes</button>
                         </div>
                     </form>

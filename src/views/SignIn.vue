@@ -39,7 +39,7 @@ const handleSignIn = async () => {
 <template>
     <div class="container">
         <header class="header">
-            <div class="logo">National Parks App</div>
+            <div class="logo">ParkQuest</div>
             <nav class="nav">
                 <router-link to="/">Home</router-link>
                 <router-link to="/about">About</router-link>
@@ -224,7 +224,7 @@ const handleSignIn = async () => {
     margin: 0 10px;
     text-decoration: none;
     color: #333;
-    text-transform: capitalize; 
+    text-transform: capitalize;
 }
 
 .footer a:hover {

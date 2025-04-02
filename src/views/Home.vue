@@ -14,7 +14,7 @@ if (authStore.isAuthenticated) {
 <template>
     <div class="container">
         <header class="header">
-            <div class="logo">National Parks App</div>
+            <div class="logo">ParkQuest</div>
             <nav class="nav">
                 <router-link to="/about">About</router-link>
                 <router-link to="/sign-in">Sign In</router-link>
@@ -23,7 +23,7 @@ if (authStore.isAuthenticated) {
         </header>
 
         <section class="welcome-section">
-            <h1>Welcome to the National Parks App</h1>
+            <h1>Welcome to ParkQuest</h1>
             <div class="buttons">
                 <router-link to="/create-account" class="btn btn-outline">Create Account</router-link>
                 <router-link to="/sign-in" class="btn btn-filled">Sign In</router-link>

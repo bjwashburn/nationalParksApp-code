@@ -38,7 +38,7 @@ const handleCreateAccount = async () => {
 <template>
     <div class="container">
         <header class="header">
-            <div class="logo">National Parks App</div>
+            <div class="logo">ParkQuest</div>
             <nav class="nav">
                 <router-link to="/">Home</router-link>
                 <router-link to="/about">About</router-link>
