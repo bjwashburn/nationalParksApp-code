@@ -380,13 +380,12 @@ const handleSearch = () => {
             </header>
 
             <div class="welcome-message" v-if="authStore.isAuthenticated">
-                <h2>Welcome, {{ authStore.user?.userName || authStore.user?.email || 'Guest' }}!</h2>
+                <h2>Welcome, {{ authStore.user?.userName }}!</h2>
             </div>
 
             <div class="user-profile">
                 <div class="profile-icon" @click="toggleDropdown">
                     <span v-if="authStore.isAuthenticated">{{ profileInitial }}</span>
-                    <span v-else>👤</span>
                 </div>
                 <div v-if="showDropdown" class="dropdown">
                     <button @click="openEditModal" class="dropdown-item">Edit Account</button>
@@ -398,7 +397,7 @@ const handleSearch = () => {
             <section class="search-grid">
                 <div class="search-box">
                     <h2>National Parks</h2>
-                    <input v-model="parkSearch" @keyup.enter="handleSearch" placeholder="Search parks..." class="search-input"/>
+                    <input v-model="parkSearch" @keyup.enter="handleSearch" placeholder="Search parks" class="search-input"/>
                     <button @click="handleSearch" class="btn btn-filled">Search</button>
                     <ul class="results-list">
                         <li v-for="park in parkResults" :key="park.id" @click="openParkDetailsModal(park)">
@@ -409,7 +408,7 @@ const handleSearch = () => {
 
                 <div class="search-box">
                     <h2>Campgrounds</h2>
-                    <input v-model="campgroundSearch" @keyup.enter="handleSearch" placeholder="Search campgrounds..." class="search-input"/>
+                    <input v-model="campgroundSearch" @keyup.enter="handleSearch" placeholder="Search campgrounds" class="search-input"/>
                     <button @click="handleSearch" class="btn btn-filled">Search</button>
                     <ul class="results-list">
                         <li v-for="campground in campgroundResults" :key="campground.id" @click="openCampgroundDetailsModal(campground)">
@@ -420,7 +419,7 @@ const handleSearch = () => {
 
                 <div class="search-box">
                     <h2>Things To Do</h2>
-                    <input v-model="thingToDoSearch" @keyup.enter="handleSearch" placeholder="Search activities..." class="search-input"/>
+                    <input v-model="thingToDoSearch" @keyup.enter="handleSearch" placeholder="Search activities" class="search-input"/>
                     <button @click="handleSearch" class="btn btn-filled">Search</button>
                     <ul class="results-list">
                         <li v-for="thing in thingToDoResults" :key="thing.id" @click="openThingToDoDetailsModal(thing)">
@@ -469,9 +468,7 @@ const handleSearch = () => {
                             <input type="text" id="userName" v-model="editForm.userName" placeholder="Enter your username" required/>
                         </div>
                         <div class="modal-actions">
-                            <button type="button" @click="closeEditModal" class="btn btn-outline">
-                                Cancel
-                            </button>
+                            <button type="button" @click="closeEditModal" class="btn btn-outline">Cancel</button>
                             <button type="submit" class="btn btn-filled">Save Changes</button>
                         </div>
                     </form>

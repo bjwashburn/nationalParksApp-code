@@ -18,7 +18,7 @@
                     Learn more about our mission to connect adventurers with the beauty of national parks.
                 </p>
 
-                <h2>Welcome to National Parks App</h2>
+                <h2>Welcome to ParkQuest</h2>
                 <p>
                     We’re passionate about the great outdoors and believe that every adventure is better when shared with friends—whether they’re old pals or new connections you meet right here on our platform.
                 </p>
