@@ -7,9 +7,6 @@ import About from '../views/about.vue';
 import Contact from '../views/contact.vue';
 import Terms from '../views/terms.vue';
 import Privacy from '../views/privacy.vue';
-import ExploreParks from '../views/explore-parks.vue';
-import MapView from '../views/map-view.vue';
-import ConnectWithFriends from '../views/connect-with-friends.vue';
 import MyTrips from '../views/my-trips.vue';
 
 const router = createRouter({
@@ -54,21 +51,6 @@ const router = createRouter({
             path: '/privacy',
             name: 'privacy',
             component: Privacy,
-        },
-        {
-            path: '/explore-parks',
-            name: 'exploreParks',
-            component: ExploreParks,
-        },
-        {
-            path: '/map-view',
-            name: 'mapView',
-            component: MapView,
-        },
-        {
-            path: '/connect-with-friends',
-            name: 'connectWithFriends',
-            component: ConnectWithFriends,
         },
         {
             path: '/my-trips',

@@ -1,0 +1,1108 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.home-vue .container,
+.sign-in-vue .container,
+.about-vue .container,
+.create-account-vue .container,
+.contact-vue .container,
+.privacy-vue .container,
+.terms-vue .container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main-vue .container,
+.my-trips-vue .container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.main-vue .header,
+.my-trips-vue .header {
+  background: #666;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.home-vue .header,
+.sign-in-vue .header,
+.about-vue .header,
+.create-account-vue .header,
+.contact-vue .header,
+.privacy-vue .header,
+.terms-vue .header {
+  padding: 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.about-vue .logo {
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+}
+
+.main-vue .nav,
+.my-trips-vue .nav {
+  flex-direction: column;
+  gap: 15px;
+}
+
+.home-vue .nav,
+.sign-in-vue .nav,
+.about-vue .nav,
+.create-account-vue .nav,
+.contact-vue .nav,
+.privacy-vue .nav,
+.terms-vue .nav {
+  gap: 20px;
+}
+
+.main-vue .nav a,
+.my-trips-vue .nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.1rem;
+  padding: 10px;
+  display: block;
+  transition: background 0.2s;
+}
+
+.home-vue .nav a,
+.sign-in-vue .nav a,
+.about-vue .nav a,
+.create-account-vue .nav a,
+.contact-vue .nav a,
+.privacy-vue .nav a,
+.terms-vue .nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+}
+
+.main-vue .nav a:hover,
+.my-trips-vue .nav a:hover {
+  color: #555;
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.home-vue .nav a:hover,
+.sign-in-vue .nav a:hover,
+.about-vue .nav a:hover,
+.create-account-vue .nav a:hover,
+.contact-vue .nav a:hover,
+.privacy-vue .nav a:hover,
+.terms-vue .nav a:hover {
+  text-decoration: underline;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.main-vue .main-content,
+.my-trips-vue .main-content {
+  padding: 20px;
+  margin-left: 250px;
+  max-width: calc(100vw - 250px);
+}
+
+.about-vue .main-content,
+.contact-vue .main-content,
+.privacy-vue .main-content,
+.terms-vue .main-content {
+  padding: 50px 20px;
+  position: relative;
+}
+
+.sidebar {
+  width: 250px;
+  background: #fff;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #ddd;
+}
+
+.footer a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+  text-transform: capitalize;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.main-vue .btn,
+.my-trips-vue .btn {
+  padding: 10px 20px;
+}
+
+.home-vue .btn {
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-outline {
+  background: none;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.main-vue .btn-outline:hover,
+.my-trips-vue .btn-outline:hover {
+  background: #f5f5f5;
+}
+
+.home-vue .btn-outline {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-filled {
+  background: #000;
+  color: #fff;
+  border: none;
+}
+
+.main-vue .btn-filled:hover,
+.my-trips-vue .btn-filled:hover,
+.sign-in-vue .btn-filled:hover:not(:disabled),
+.create-account-vue .btn-filled:hover:not(:disabled) {
+  background: #333;
+}
+
+.home-vue .btn-filled {
+  background: black;
+  color: white;
+  border: none;
+}
+
+.sign-in-vue .btn-filled,
+.create-account-vue .btn-filled {
+  padding: 12px 30px;
+  font-weight: bold;
+  border-radius: 25px;
+  width: 200px;
+  margin: 0 auto;
+  display: block;
+}
+
+.sign-in-vue .btn-filled:disabled,
+.create-account-vue .btn-filled:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #d9363e;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.modal p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.error {
+  color: #ff4d4f;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Styles specific to main.vue */
+.main-vue .welcome-message {
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.main-vue .welcome-message h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.main-vue .user-profile {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.main-vue .profile-icon {
+  width: 40px;
+  height: 40px;
+  background: #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 2px solid #fff;
+  transition: background 0.2s;
+}
+
+.main-vue .profile-icon:hover {
+  background: #bbb;
+}
+
+.main-vue .dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.main-vue .dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.main-vue .dropdown-item:hover {
+  background: #f5f5f5;
+}
+
+.main-vue .search-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+  max-width: 100%;
+}
+
+.main-vue .search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-vue .search-box h2 {
+  font-size: 1.2rem;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.main-vue .search-input {
+  padding: 8px;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.main-vue .results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.main-vue .results-list li {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.main-vue .results-list li:hover {
+  background: #f5f5f5;
+}
+
+.main-vue .featured-parks {
+  margin-bottom: 40px;
+  max-width: 100%;
+}
+
+.main-vue .featured-parks h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.main-vue .slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+.main-vue .park-grid {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  -webkit-overflow-scrolling: touch;
+  max-width: calc(100% - 100px);
+  margin: 0 auto;
+}
+
+.main-vue .park-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.main-vue .park-grid::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.main-vue .park-card {
+  flex: 0 0 250px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.main-vue .park-card:hover {
+  transform: translateY(-5px);
+}
+
+.main-vue .park-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.main-vue .placeholder-image {
+  width: 100%;
+  height: 150px;
+  background: #e0e0e0;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.main-vue .park-info {
+  padding: 10px;
+}
+
+.main-vue .park-info h3 {
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
+
+.main-vue .park-info p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.main-vue .description {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.main-vue .slider-arrow {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s;
+}
+
+.main-vue .slider-arrow.left {
+  left: 0;
+}
+
+.main-vue .slider-arrow.right {
+  right: 0;
+}
+
+.main-vue .slider-arrow:hover {
+  background: #f5f5f5;
+}
+
+.main-vue .modal-park-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.main-vue .edit-form,
+.main-vue .trip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.main-vue .form-group input:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Styles specific to my-trips.vue */
+.my-trips-vue .header .user-id {
+  font-size: 0.9rem;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.my-trips-vue .actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.my-trips-vue .trip-list,
+.my-trips-vue .excursion-list {
+  margin-bottom: 40px;
+}
+
+.my-trips-vue .trip-list h2,
+.my-trips-vue .excursion-list h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.my-trips-vue .trip-grid,
+.my-trips-vue .excursion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.my-trips-vue .trip-card,
+.my-trips-vue .excursion-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.my-trips-vue .trip-card:hover,
+.my-trips-vue .excursion-card:hover {
+  transform: translateY(-5px);
+}
+
+.my-trips-vue .trip-card h3,
+.my-trips-vue .excursion-card h3 {
+  font-size: 1.2rem;
+  margin: 0 0 10px;
+}
+
+.my-trips-vue .trip-card p,
+.my-trips-vue .excursion-card p {
+  font-size: 1rem;
+  margin: 5px 0;
+  color: #666;
+}
+
+.my-trips-vue .trip-actions,
+.my-trips-vue .excursion-actions,
+.my-trips-vue .invite-actions,
+.my-trips-vue .friend-request-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.my-trips-vue .no-trips,
+.my-trips-vue .no-excursions,
+.my-trips-vue .no-invites {
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.my-trips-vue .invite-list,
+.my-trips-vue .participant-list,
+.my-trips-vue .friend-list,
+.my-trips-vue .friend-request-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.my-trips-vue .invite-list li,
+.my-trips-vue .participant-list li,
+.my-trips-vue .friend-list li,
+.my-trips-vue .friend-request-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.my-trips-vue .modal h3 {
+  font-size: 1.2rem;
+  margin: 20px 0 10px;
+}
+
+.my-trips-vue .excursion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Styles specific to home.vue */
+.home-vue .welcome-section {
+  background-color: #666;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+  margin: 20px 0;
+}
+
+.home-vue .welcome-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.home-vue .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Styles specific to sign-in.vue */
+.sign-in-vue .sign-in-section {
+  text-align: center;
+  padding: 50px 20px;
+  flex: 1;
+}
+
+.sign-in-vue .sign-in-section h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 40px;
+}
+
+.sign-in-vue .sign-in-form {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sign-in-vue .form-row {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.sign-in-vue .form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.sign-in-vue .form-group label {
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.sign-in-vue .form-group input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  width: 100%;
+  background: #fff;
+}
+
+.sign-in-vue .form-group input::placeholder {
+  color: #aaa;
+}
+
+.sign-in-vue .error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.sign-in-vue .create-account-link {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.sign-in-vue .create-account-link a {
+  color: #333;
+  text-decoration: underline;
+}
+
+/* Styles specific to about.vue */
+.about-vue .user-profile {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.about-vue .profile-icon {
+  width: 40px;
+  height: 40px;
+  background: #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 2px solid #fff;
+  transition: background 0.2s;
+}
+
+.about-vue .profile-icon:hover {
+  background: #bbb;
+}
+
+.about-vue .dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.about-vue .dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.about-vue .dropdown-item:hover {
+  background: #f5f5f5;
+}
+
+.about-vue .about-us-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.about-vue .about-us-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+}
+
+.about-vue .subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-vue .about-us-content h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.about-vue .about-us-content p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.about-vue .features-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.about-vue .features-list li {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.about-vue .features-list li strong {
+  color: #000;
+}
+
+.about-vue .call-to-action {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Styles specific to create-account.vue */
+.create-account-vue .create-account-section {
+  text-align: center;
+  padding: 50px 20px;
+  flex: 1;
+}
+
+.create-account-vue .create-account-section h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 40px;
+}
+
+.create-account-vue .create-account-form {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.create-account-vue .form-row {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.create-account-vue .form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.create-account-vue .form-group label {
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.create-account-vue .form-group input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  width: 100%;
+  background: #fff;
+}
+
+.create-account-vue .form-group input::placeholder {
+  color: #aaa;
+}
+
+.create-account-vue .error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.create-account-vue .sign-in-link {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.create-account-vue .sign-in-link a {
+  color: #333;
+  text-decoration: underline;
+}
+
+/* Styles specific to contact.vue */
+.contact-vue .contact-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contact-vue .contact-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+}
+
+.contact-vue .subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-vue .contact-content h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.contact-vue .contact-content p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.contact-vue .contact-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-vue .contact-list li {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.contact-vue .contact-list li strong {
+  color: #000;
+}
+
+.contact-vue .contact-list a {
+  color: #333;
+  text-decoration: underline;
+}
+
+.contact-vue .contact-list a:hover {
+  color: #555;
+}
+
+/* Styles specific to privacy.vue and terms.vue */
+.privacy-vue .policy-content,
+.terms-vue .policy-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.privacy-vue .policy-content h1,
+.terms-vue .policy-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+}
+
+.privacy-vue .subtitle,
+.terms-vue .subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.privacy-vue .policy-content h2,
+.terms-vue .policy-content h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.privacy-vue .policy-content p,
+.terms-vue .policy-content p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.privacy-vue .policy-list,
+.terms-vue .policy-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.privacy-vue .policy-list li,
+.terms-vue .policy-list li {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.privacy-vue .policy-list li strong,
+.terms-vue .policy-list li strong {
+  color: #000;
+}
+
+.privacy-vue .policy-content a,
+.terms-vue .policy-content a {
+  color: #333;
+  text-decoration: underline;
+}
+
+.privacy-vue .policy-content a:hover,
+.terms-vue .policy-content a:hover {
+  color: #555;
+}
