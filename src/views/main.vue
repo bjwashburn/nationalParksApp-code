@@ -38,7 +38,7 @@ const parkResults = ref([]);
 const campgroundResults = ref([]);
 const thingToDoResults = ref([]);
 const featuredParks = ref([]);
-const featuredParksLimit = ref(50);
+const featuredParksLimit = ref(20);
 const featuredParksStart = ref(0);
 const sliderRef = ref(null);
 
@@ -102,6 +102,16 @@ const closeCampgroundDetailsModal = () => {
 const closeThingToDoDetailsModal = () => {
     showThingToDoDetailsModal.value = false;
     selectedThingToDo.value = null;
+};
+
+// Navigate to My Trips page to create a trip for the selected park
+const createTripForPark = () => {
+    if (!selectedPark.value) return;
+    router.push({
+        path: '/my-trips',
+        query: { parkId: selectedPark.value._id || selectedPark.value.id },
+    });
+    closeParkDetailsModal();
 };
 
 const handleEditAccount = async () => {
@@ -435,7 +445,14 @@ const handleSearch = () => {
                     <button class="slider-arrow left" @click="scrollLeft" aria-label="Scroll left">←</button>
                     <div class="park-grid" ref="sliderRef">
                         <div v-for="park in featuredParks" :key="park.id" class="park-card" @click="openParkDetailsModal(park)">
-                            <div class="placeholder-image"></div>
+                            <img
+                                v-if="park.images && park.images.length > 0"
+                                :src="park.images[0].url"
+                                :alt="park.images[0].altText || park.name || park.fullName || 'Park Image'"
+                                class="park-image"
+                                @error="handleImageError"
+                            />
+                            <div v-else class="placeholder-image">No Image Available</div>
                             <div class="park-info">
                                 <h3>{{ park.name || park.fullName || 'Unnamed Park' }}</h3>
                                 <p>{{ park.states || 'Unknown Location' }}</p>
@@ -489,11 +506,22 @@ const handleSearch = () => {
             <div v-if="showParkDetailsModal" class="modal-overlay">
                 <div class="modal">
                     <h2>{{ selectedPark?.name || selectedPark?.fullName || 'Unnamed Park' }}</h2>
+                    <img
+                        v-if="selectedPark?.images && selectedPark.images.length > 0"
+                        :src="selectedPark.images[0].url"
+                        :alt="selectedPark.images[0].altText || selectedPark.name || selectedPark.fullName || 'Park Image'"
+                        class="modal-park-image"
+                        @error="handleImageError"
+                    />
+                    <div v-else class="placeholder-image">No Image Available</div>
                     <p><strong>Address:</strong> {{ selectedPark?.addresses?.[0]?.line1 || 'N/A' }}, {{ selectedPark?.addresses?.[0]?.city || 'N/A' }}, {{ selectedPark?.addresses?.[0]?.stateCode || 'N/A' }} {{ selectedPark?.addresses?.[0]?.postalCode || 'N/A' }}</p>
                     <p><strong>Contacts:</strong> {{ selectedPark?.contacts?.phoneNumbers?.[0]?.phoneNumber || 'N/A' }}, {{ selectedPark?.contacts?.emailAddresses?.[0]?.emailAddress || 'N/A' }}</p>
                     <p><strong>Description:</strong> {{ selectedPark?.description || 'No description available' }}</p>
                     <p><strong>Hours:</strong> {{ selectedPark?.operatingHours?.[0]?.description || 'No hours available' }}</p>
-                    <button @click="closeParkDetailsModal" class="btn btn-outline">Close</button>
+                    <div class="modal-actions">
+                        <button @click="closeParkDetailsModal" class="btn btn-outline">Close</button>
+                        <button @click="createTripForPark" class="btn btn-filled">Create Trip</button>
+                    </div>
                 </div>
             </div>
 
@@ -785,10 +813,23 @@ const handleSearch = () => {
     transform: translateY(-5px);
 }
 
+.park-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
 .placeholder-image {
+    width: 100%;
     height: 150px;
     background: #e0e0e0;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 .park-info {
@@ -876,6 +917,14 @@ const handleSearch = () => {
     margin-bottom: 10px;
 }
 
+.modal-park-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
 .edit-form {
     display: flex;
     flex-direction: column;
@@ -922,6 +971,21 @@ const handleSearch = () => {
 
 .btn-outline:hover {
     background: #f5f5f5;
+}
+
+.btn-filled {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.btn-filled:hover {
+    background: #333;
 }
 
 .btn-danger {
